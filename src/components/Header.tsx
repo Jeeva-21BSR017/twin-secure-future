@@ -1,8 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    // GSAP ScrollTrigger for header transformation
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: document.body,
+      start: "100px top",
+      end: "bottom bottom",
+      onToggle: (self) => {
+        if (self.isActive) {
+          header.classList.remove('header-hero');
+          header.classList.add('header-compact');
+        } else {
+          header.classList.remove('header-compact');
+          header.classList.add('header-hero');
+        }
+      }
+    });
+
+    // Initial state
+    header.classList.add('header-hero');
+
+    return () => {
+      scrollTrigger.kill();
+    };
+  }, []);
 
   const navItems = [
     { name: 'About', href: '#about' },
@@ -21,7 +54,10 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header 
+      ref={headerRef}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-600"
+    >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

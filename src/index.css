@@ -157,42 +157,6 @@
     100% { background-position: 50px 50px; }
   }
   
-  /* Enhanced header grid effect with glittery deep sky blue */
-  .cyber-grid-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(#00BFFF 1px, transparent 1px),
-      linear-gradient(90deg, #00BFFF 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: grid-glitter 2s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  @keyframes grid-glitter {
-    0%, 100% { 
-      opacity: 0.2;
-      filter: brightness(1);
-    }
-    25% { 
-      opacity: 0.6;
-      filter: brightness(1.5) drop-shadow(0 0 3px #00BFFF);
-    }
-    50% { 
-      opacity: 0.4;
-      filter: brightness(1.2);
-    }
-    75% { 
-      opacity: 0.8;
-      filter: brightness(1.8) drop-shadow(0 0 5px #00BFFF);
-    }
-  }
-
   /* Data flow animation */
   .data-flow {
     background: linear-gradient(90deg, 
@@ -206,50 +170,6 @@
   @keyframes flow {
     0%, 100% { background-position: -200% 0; }
     50% { background-position: 200% 0; }
-  }
-  
-  /* Security-themed text animations */
-  .security-shake {
-    animation: security-shake 0.5s ease-in-out infinite alternate;
-  }
-  
-  @keyframes security-shake {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(2px); }
-  }
-  
-  .security-wrap {
-    animation: security-wrap 3s ease-in-out infinite;
-  }
-  
-  @keyframes security-wrap {
-    0%, 100% { 
-      transform: perspective(400px) rotateY(0deg);
-      text-shadow: 0 0 10px #00BFFF;
-    }
-    25% { 
-      transform: perspective(400px) rotateY(5deg);
-      text-shadow: 2px 0 15px #00BFFF;
-    }
-    75% { 
-      transform: perspective(400px) rotateY(-5deg);
-      text-shadow: -2px 0 15px #00BFFF;
-    }
-  }
-  
-  .security-pulse {
-    animation: security-pulse 2s ease-in-out infinite;
-  }
-  
-  @keyframes security-pulse {
-    0%, 100% { 
-      transform: scale(1);
-      filter: drop-shadow(0 0 5px #00BFFF);
-    }
-    50% { 
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 15px #00BFFF);
-    }
   }
   
   /* Card hover effects */
